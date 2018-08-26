@@ -41,7 +41,7 @@ while(True):
     if cv2.waitKey(100) & 0xFF == ord('q'):
         break
 
-    elif count>100:
+    elif count>60:
         break
 
 vid_cam.release()
