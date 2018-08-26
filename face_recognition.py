@@ -2,13 +2,16 @@
 #For more info visit jishnu.co
 
 import cv2
-
+import xlwt
+import time
 import numpy as np
 import os 
 def assure_path_exists(path):
     dir = os.path.dirname(path)
     if not os.path.exists(dir):
         os.makedirs(dir)
+
+workbook = xlwt.Workbook(encoding="utf-8")
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 assure_path_exists("trainer/")
@@ -33,14 +36,24 @@ while True:
     for(x,y,w,h) in faces:
 
         cv2.rectangle(im, (x-20,y-20), (x+w+20,y+h+20), (0,255,0), 4)
-
         Id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
 
         if(confidence<50):
             if(Id==1):
-                Id="Jishnu J" 
+                Id="Jishnu"
+                sheet1 = workbook.add_sheet("Attendance")
+                sheet1.write(0,0,"210916106019")
+                sheet1.write(0,1,"Jishnu")
+                sheet1.write(0,2,time.asctime(time.localtime(time.time())))
+                sheet1.write(0,3,"Present")
+                workbook.save("Attendance_Sheet.xls")
+    
+
+ 
             elif(Id==2):
-                Id="Jahnvi"
+                Id="Jishnu"
+                    
+
             elif(Id==3):
                 Id="Harshitha Reddy"
         else:
