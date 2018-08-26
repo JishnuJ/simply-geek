@@ -3,6 +3,7 @@
 
 import cv2
 import xlwt
+from xlwt import Workbook
 import time
 import numpy as np
 import os 
@@ -10,8 +11,7 @@ def assure_path_exists(path):
     dir = os.path.dirname(path)
     if not os.path.exists(dir):
         os.makedirs(dir)
-
-workbook = xlwt.Workbook(encoding="utf-8")
+wb = Workbook()
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 assure_path_exists("trainer/")
@@ -41,18 +41,16 @@ while True:
         if(confidence<50):
             if(Id==1):
                 Id="Jishnu"
-                sheet1 = workbook.add_sheet("Attendance")
+                sheet1 = wb.add_sheet('Sheet 1')
                 sheet1.write(0,0,"210916106019")
                 sheet1.write(0,1,"Jishnu")
                 sheet1.write(0,2,time.asctime(time.localtime(time.time())))
                 sheet1.write(0,3,"Present")
-                workbook.save("Attendance_Sheet.xls")
-    
+                wb.save('Attendance.xls')
 
- 
             elif(Id==2):
-                Id="Jishnu"
-                    
+                Id="Sravani"
+
 
             elif(Id==3):
                 Id="Harshitha Reddy"
