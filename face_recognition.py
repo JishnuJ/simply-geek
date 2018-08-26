@@ -38,9 +38,9 @@ while True:
 
         if(confidence<50):
             if(Id==1):
-                Id="Jahnavi" 
+                Id="Jishnu J" 
             elif(Id==2):
-                Id="Jishnu"
+                Id="Jahnvi"
             elif(Id==3):
                 Id="Harshitha Reddy"
         else:
